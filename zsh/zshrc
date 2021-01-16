@@ -336,7 +336,7 @@ export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config.golden:$HOME/.kube/config
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # pip installs
-export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+#export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/rmatthes/.sdkman"
@@ -344,3 +344,4 @@ export SDKMAN_DIR="/Users/rmatthes/.sdkman"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+

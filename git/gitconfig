@@ -1,0 +1,29 @@
+[user]
+	name = rmatthes
+	email = ray.matthes@icd-tech.com
+#	email = ray.matthes@gmail.com
+[core]
+	editor = /Applications/MacVim.app/Contents/bin/mvim -v
+	excludesfile = /Users/rmatthes/.gitignore_global
+[merge]
+	tool = vimdiff
+[alias]
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches --remotes --tags
+    s = status
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = matching
+[color]
+	ui = auto
+[commit]
+	template = /Users/rmatthes/.stCommitMsg
+[fetch]
+	prune = true
+[pull]
+	prune = true

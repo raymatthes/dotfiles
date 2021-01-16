@@ -7,8 +7,16 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: zshrc
-    ~/.vimrc: vimrc
+    # zshell
+    ~/.zshrc: zsh/zshrc
+    # vim
+    ~/.vimrc: vim/vimrc
+    # powerline
+    ~/.p10k.zsh: powerline/p10k.zsh
+    # git
+    ~/.gitconfig: git/gitconfig
+    # hammerspoon
+    ~/.hammerspoon/init.lua: hammerspoon/init.lua
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

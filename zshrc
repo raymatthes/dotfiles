@@ -1,0 +1,346 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/rmatthes/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="fino"
+#ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(
+#   git
+# )
+plugins=(osx git git-flow grails gradle vagrant kubectl)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin/bin-db"
+export PATH="$PATH:$HOME/bin/bin-git"
+
+# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# oracle instant client enables sqlplus
+export ORACLE_HOME=$HOME
+#export INSTANT_CLIENT_HOME=$ORACLE_HOME/instantclient_12_2
+export INSTANT_CLIENT_HOME=$ORACLE_HOME/instantclient_19_3
+export PATH=$PATH:$INSTANT_CLIENT_HOME
+export DYLD_LIBRARY_PATH=$INSTANT_CLIENT_HOME
+export TNS_ADMIN=$INSTANT_CLIENT_HOME/network/admin
+export CLASSPATH=$CLASSPATH:$ORACLE_HOME
+export NLS_LANG="AMERICAN_AMERICA.AL32UTF8"
+
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# prevent commands that start with a space from going into HISTFILE
+setopt HIST_IGNORE_SPACE
+
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+
+alias ll='ls -la'
+#
+# delete port_forward.sh commands because password is a parameter
+# alias delete-history-port-forward='a="port";b="_forward.sh";sed -i.bak "/$a$b/d" $HISTFILE;rm $HISTFILE.bak'
+# alias port_forward=' port_forward.sh'
+# alias port_forward.sh=' port_forward.sh'
+
+alias rake='noglob rake'
+
+alias 2gp="cd ~/src/2gP"
+# alias g3x="cd ~/src/g3x"
+alias cuke="cd ~/src/selenium3"
+alias selenium="cd ~/src/selenium3"
+# alias uber="cd ~/Desktop/uber-conf"
+
+# Vagrant
+alias vup="vagrant up"
+alias vs="vagrant ssh"
+alias vups="vagrant up && vagrant ssh"
+alias vh="vagrant halt"
+
+alias oms="cd $HOME/omscs/cs6200/vagrant"
+alias omsv="cd $HOME/omscs/cs6200/vagrant && vagrant up && vagrant ssh"
+
+alias jpm-edit="vi ~/fake-jpm/jpm-test-harness"
+
+alias grails201="jenv global 1.7.0.21 && sdk default groovy 1.8.6 && sdk default grails 2.0.1"
+alias grails236="jenv global 1.7.0.21 && sdk default groovy 2.1.9 && sdk default grails 2.3.6"
+alias grails241="jenv global 1.7.0.21 && sdk default groovy 2.3.3 && sdk default grails 2.4.1"
+alias grails244="jenv global 1.8.0.31 && jenv enable-plugin export && sdk default groovy 2.3.7 && sdk default grails 2.4.4 && sdk default gradle 2.4"
+alias grails309="jenv global 1.8.0.31 && sdk default groovy 2.4.5 && sdk default grails 3.0.9"
+alias grails330="jenv global 1.8.0.40 && jenv enable-plugin export && sdk default groovy 2.4.11 && sdk default grails 3.3.0 && sdk default gradle 3.5"
+alias grails331="jenv global 1.8.0.40 && jenv enable-plugin export && sdk default groovy 2.4.11 && sdk default grails 3.3.1 && sdk default gradle 3.5"
+alias grails332="jenv global 1.8.0.40 && jenv enable-plugin export && sdk default groovy 2.4.13 && sdk default grails 3.3.2 && sdk default gradle 3.5"
+
+alias shell201="jenv shell 1.7.0.21 && sdk use groovy 1.8.6 && sdk use grails 2.0.1"
+alias shell236="jenv shell 1.7.0.21 && sdk use groovy 2.1.9 && sdk use grails 2.3.6"
+alias shell241="jenv shell 1.7.0.21 && sdk use groovy 2.3.3 && sdk use grails 2.4.1"
+alias shell244="jenv shell 1.8.0.31 && jenv enable-plugin export && sdk use groovy 2.3.7 && sdk use grails 2.4.4 && sdk use gradle 2.4"
+alias shell309="jenv shell 1.8.0.31 && sdk use groovy 2.4.5 && sdk use grails 3.0.9"
+alias shell330="jenv shell 1.8.0.40 && jenv enable-plugin export && sdk use groovy 2.4.11 && sdk use grails 3.3.0 && sdk use gradle 3.5"
+alias shell331="jenv shell 1.8.0.40 && jenv enable-plugin export && sdk use groovy 2.4.11 && sdk use grails 3.3.1 && sdk use gradle 3.5"
+alias shell332="jenv shell 1.8.0.40 && jenv enable-plugin export && sdk use groovy 2.4.13 && sdk use grails 3.3.2 && sdk use gradle 3.5"
+
+alias versions="java -version && groovy -version && grails -version && gradle -version"
+alias grails-memory='export GRAILS_OPTS="-Xmx2g"'
+
+alias create-configs="pushd $HOME/src/deployer; gradle -Dtargets=admin,2gP -Denvironments=ray local; popd"
+alias delete-configs="rm -vf $HOME/.grails/admin-config.groovy $HOME/.grails/2gP-config.groovy"
+alias stash-configs="mv -vf $HOME/.grails/admin-config.groovy $HOME/.grails/admin-config.groovy.stash; mv -vf $HOME/.grails/2gP-config.groovy $HOME/.grails/2gP-config.groovy.stash"
+alias pop-configs="mv -vf $HOME/.grails/admin-config.groovy.stash $HOME/.grails/admin-config.groovy; mv -vf $HOME/.grails/2gP-config.groovy.stash $HOME/.grails/2gP-config.groovy"
+
+run-cukes-firefox() { gradle -Puser=ray -Ptags="$@" -xrestoredata -DbrowserDriver=FIREFOX runCukes }
+run-cukes-chrome() { gradle -Puser=ray -Ptags="$@" -xrestoredata -DbrowserDriver=CHROME runCukes }
+run-cukes() { run-cukes-chrome "$@" }
+run-cukes-firefox-fast() { gradle -Puser=ray -Ptags="$@" -xrestoredata -DbrowserDriver=FIREFOX -Dfast=yes runCukes }
+run-cukes-chrome-fast() { gradle -Puser=ray -Ptags="$@" -xrestoredata -DbrowserDriver=CHROME -Dfast=yes runCukes }
+run-cukes-fast() { run-cukes-chrome-fast "$@" }
+
+alias show-files='defaults write com.apple.finder AppleShowAllFiles YES && killall Finder /System/Library/CoreServices/Finder.app'
+alias hide-files='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder /System/Library/CoreServices/Finder.app'
+
+alias push-pw='cp -v $HOME/Documents/pw/Home/pw-home.kdbx $HOME/Dropbox/internal/pw/Home/pw-home.kdbx && cp -v $HOME/Documents/pw/ICD/pw-icd.kdbx $HOME/Dropbox/internal/pw/ICD/pw-icd.kdbx'
+
+alias flush-dns-cache='sudo dscacheutil -flushcache'
+alias refresh-dns-cache='sudo killall -HUP mDNSResponder'
+alias reflush='flush-dns-cache;refresh-dns-cache;arp -a'
+
+# wget http://raw.github.com/b4winckler/macvim/master/src/MacVim/mvim /usr/local/bin/mvim
+alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
+alias vim='mvim -v'
+alias vi='vim'
+
+# set some Docker Toolbox environment variables
+alias docker-default='docker-machine env default && eval $(docker-machine env default)'
+alias docker-lab='docker-machine env lab && eval $(docker-machine env lab)'
+
+# git
+alias gno='git show --name-only'
+
+# sqlplus
+alias sql='echo "connect $ORA_USER@$ORA_SID";rlwrap -pgreen sqlplus "$ORA_USER"/"$ORA_PASSWORD"@"$ORA_SID"'
+
+_sqlenv() { export ORA_USER="$1" && export ORA_SID="$2" }
+alias sqlenv=_sqlenv
+
+alias sql-rm='sqlenv rmatthes_portal qa2'
+alias sql-it='sqlenv it_portal dev1'
+alias sql-auto='sqlenv auto_portal qa2'
+alias sql-dev2='sqlenv portal dev2'
+
+_yarny() { echo "node version = '`node -v | tr -d v`'" ; echo "yarn version = '`yarn -v`'" }
+alias yarny=_yarny
+
+alias piterm='screen /dev/cu.SLAB_USBtoUART 115200'
+
+_reset-yarn() {
+	rm yarn.lock
+	rm package-lock.json
+	rm -rf node_modules
+	yarn cache clean
+	yarn install
+	npm rebuild node-sass
+}
+alias reset-yarn=_reset-yarn
+
+alias yarn-common='pushd icd-common && yarn install && popd'
+alias yarn-admin='pushd icd-common && yarn install && popd && pushd admin && yarn install && popd'
+alias yarn-2gP='pushd icd-common && yarn install && popd && pushd 2gP && yarn install && popd'
+alias yarn-all='pushd icd-common && yarn install && popd && pushd admin && yarn install && popd && pushd 2gP && yarn install && popd'
+
+
+alias kill-gradle='jps | grep GradleWorkerMain | cut -f1 -d " " | while read pid; do kill -9 $pid; done'
+
+# mongodb
+alias mongod='mongod --dbpath $MONGODB_DATA'
+
+
+# openfortivpn
+alias vpn='sudo openfortivpn -c ~/openfortivpn/icd-golden-centurylink.conf'
+
+# default sqlplus environment
+export ORA_USER='rmatthes_portal'
+export ORA_PASSWORD='portal'
+export ORA_SID='qa2'
+
+# for vim mode editing of commands
+export EDITOR='mvim -v'
+export VISUAL=$EDITOR
+
+# disable special creation/extraction of ._* files by tar, etc. on Mac OS X
+export COPYFILE_DISABLE=1
+
+# android dev
+export ANDROID_HOME=$HOME/Library/Android/sdk
+PATH="$PATH:$HOME/bin"
+PATH="$PATH:$HOME/git-scripts"
+PATH="$PATH:$ANDROID_HOME/tools"
+PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+# node
+PATH="$PATH:$HOME/.node/bin"
+# npm
+PATH="$PATH:$HOME/.npm-packages/bin"
+
+# postgresql
+export POSTGRESQL_INSTALL="/Library/PostgreSQL/11"
+export PGUSER="postgres"
+export PGPASSWORD="1cdt3ch!!"
+PATH="$PATH:$POSTGRESQL_INSTALL/bin"
+
+# mongodb
+export MONGODB_INSTALL="$HOME/mongodb-osx-x86_64-4.0.6"
+export MONGODB_DATA="$HOME/mongodb/data/db"
+PATH="$PATH:$MONGODB_INSTALL/bin"
+
+export PATH
+
+
+# for building cartridges
+export VOLANTEHOME=$HOME/volante-lib/5.2.1
+
+# cyanogenmod builds START
+#
+# mount the android file image
+function mountAndroid { hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android; }
+#
+# speed up subsequent builds
+export USE_CCACHE=1
+#
+# cyanogenmod builds END
+
+# Node Version Manager
+#export NVM_DIR=~/.nvm
+#source $(brew --prefix nvm)/nvm.sh
+
+###
+#
+# jenv, sdk, rvm settings
+#
+
+#
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#
+# echo "java" `cat $HOME/.jenv/version`
+# echo `ls -la $HOME/.sdkman/candidates/groovy/current | awk '{ print $11 }' | awk -F/ '{ print $6 " " $7 }'`
+# echo `ls -la $HOME/.sdkman/candidates/grails/current | awk '{ print $11 }' | awk -F/ '{ print $6 " " $7 }'`
+# echo `ls -la $HOME/.sdkman/candidates/gradle/current | awk '{ print $11 }' | awk -F/ '{ print $6 " " $7 }'`
+
+# jenv setup
+export JENV_ROOT="/usr/local/Cellar/jenv/"
+eval "$(jenv init -)"
+# jenv sets JAVA_HOME
+jenv enable-plugin export > /dev/null 2>&1
+
+# k8s
+export MANAGE_FROM_HOST=true
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config.golden:$HOME/.kube/config
+
+# vscode via 'code'
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# pip installs
+export PATH="$PATH:$HOME/Library/Python/2.7/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/rmatthes/.sdkman"
+[[ -s "/Users/rmatthes/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/rmatthes/.sdkman/bin/sdkman-init.sh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

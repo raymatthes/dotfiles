@@ -17,6 +17,8 @@
     ~/.gitconfig: git/gitconfig
     # hammerspoon
     ~/.hammerspoon/init.lua: hammerspoon/init.lua
+    # tmux
+    ~/.tmux.conf: tmux/tmux.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

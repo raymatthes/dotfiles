@@ -19,6 +19,8 @@
     ~/.hammerspoon/init.lua: hammerspoon/init.lua
     # tmux
     ~/.tmux.conf: tmux/tmux.conf
+    # npm
+    ~/.npmrc: npm/npmrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

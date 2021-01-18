@@ -76,7 +76,14 @@ HIST_STAMPS="yyyy-mm-dd"
 # plugins=(
 #   git
 # )
-plugins=(osx git git-flow grails gradle vagrant kubectl)
+case `uname` in
+  Darwin)
+    plugins=(osx git git-flow grails gradle vagrant kubectl)
+  ;;
+  Linux)
+    plugins=(git git-flow grails gradle vagrant kubectl)
+  ;;
+esac
 
 source $ZSH/oh-my-zsh.sh
 
@@ -134,11 +141,6 @@ setopt HIST_IGNORE_SPACE
 
 
 alias ll='ls -la'
-#
-# delete port_forward.sh commands because password is a parameter
-# alias delete-history-port-forward='a="port";b="_forward.sh";sed -i.bak "/$a$b/d" $HISTFILE;rm $HISTFILE.bak'
-# alias port_forward=' port_forward.sh'
-# alias port_forward.sh=' port_forward.sh'
 
 alias rake='noglob rake'
 
@@ -257,9 +259,13 @@ alias kill-gradle='jps | grep GradleWorkerMain | cut -f1 -d " " | while read pid
 # mongodb
 alias mongod='mongod --dbpath $MONGODB_DATA'
 
-
 # openfortivpn
 alias vpn='sudo openfortivpn -c ~/openfortivpn/icd-golden-centurylink.conf'
+
+# python
+alias python=python3
+alias pip=pip3
+
 
 # default sqlplus environment
 export ORA_USER='rmatthes_portal'
@@ -298,36 +304,8 @@ PATH="$PATH:$MONGODB_INSTALL/bin"
 
 export PATH
 
-
 # for building cartridges
 export VOLANTEHOME=$HOME/volante-lib/5.2.1
-
-# cyanogenmod builds START
-#
-# mount the android file image
-function mountAndroid { hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android; }
-#
-# speed up subsequent builds
-export USE_CCACHE=1
-#
-# cyanogenmod builds END
-
-# Node Version Manager
-#export NVM_DIR=~/.nvm
-#source $(brew --prefix nvm)/nvm.sh
-
-###
-#
-# jenv, sdk, rvm settings
-#
-
-#
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-#
-# echo "java" `cat $HOME/.jenv/version`
-# echo `ls -la $HOME/.sdkman/candidates/groovy/current | awk '{ print $11 }' | awk -F/ '{ print $6 " " $7 }'`
-# echo `ls -la $HOME/.sdkman/candidates/grails/current | awk '{ print $11 }' | awk -F/ '{ print $6 " " $7 }'`
-# echo `ls -la $HOME/.sdkman/candidates/gradle/current | awk '{ print $11 }' | awk -F/ '{ print $6 " " $7 }'`
 
 # jenv setup
 case `uname` in
@@ -348,10 +326,15 @@ export MANAGE_FROM_HOST=true
 export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config.golden:$HOME/.kube/config
 
 # vscode via 'code'
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+case `uname` in
+  Darwin)
+    export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+  ;;
+  Linux)
+    export PATH="$PATH:/vscode/bin"
+  ;;
+esac
 
-# pip installs
-#export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${HOME}/.sdkman"

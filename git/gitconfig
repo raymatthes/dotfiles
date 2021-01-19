@@ -27,3 +27,5 @@
 	prune = true
 [pull]
 	prune = true
+[credential]
+	helper = store
